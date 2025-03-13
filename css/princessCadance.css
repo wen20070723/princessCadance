@@ -1,0 +1,411 @@
+/* 引入 Google 字体，Comfortaa 用于正文，Pacifico 用于标题 */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Pacifico&display=swap');
+
+/* 定义全局变量，使用柔和、甜美的颜色来体现音韵公主的性格 */
+:root {
+    --primary-color: #FFAEC9;
+    --secondary-color: #E0B0FF;
+    --accent-color: #B19CD9;
+    --text-color: #6A5ACD;
+    --background-gradient-start: #FFF6FF;
+    --background-gradient-end: #F0F8FF;
+}
+
+/* 全局样式设置 */
+body {
+    font-family: 'Comfortaa', cursive;
+    background: radial-gradient(circle at 50% 0%, var(--background-gradient-start), var(--background-gradient-end));
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* 为页面添加梦幻的背景图案动画 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFAEC9' fill-opacity='0.1' d='M50 0L62.5 25H37.5L50 0M50 100L37.5 75H62.5L50 100M100 50L75 62.5V37.5L100 50M0 50L25 62.5V37.5L0 50'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    z-index: -1;
+    animation: sparkle 12s linear infinite;
+}
+
+/* 头部样式 */
+.header {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    margin-bottom: -2rem;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 头部下方的装饰元素 */
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+/* 导航栏样式 */
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+}
+
+.main-nav a {
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    background: rgba(255, 174, 201, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 导航链接悬停效果 */
+.main-nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.main-nav a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(177, 156, 217, 0.3);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+.main-nav a:hover::before {
+    left: 100%;
+}
+
+/* 主图片容器样式 */
+.main-image-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 主图片容器的光影效果 */
+.main-image-container::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: conic-gradient(var(--primary-color), var(--accent-color), var(--primary-color));
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: -1;
+    animation: rotate 10s linear infinite;
+}
+
+/* 主图片下方的说明文字 */
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(transparent, rgba(224, 176, 255, 0.8));
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* 各个章节的样式 */
+section {
+    padding: 4rem 2rem;
+    margin: 3rem auto;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(177, 156, 217, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* 章节鼠标悬停效果 */
+section:hover {
+    transform: scale(1.02);
+}
+
+/* 章节的光影装饰 */
+section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background: var(--primary-color);
+    filter: blur(60px);
+    opacity: 0.2;
+}
+
+/* 标题字体和样式 */
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: var(--text-color);
+}
+
+/* 二级标题下方的装饰线条 */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+/* 角色特点列表样式 */
+.features-section li {
+    padding: 2rem;
+    margin: 1.5rem 0;
+    background: rgba(255, 174, 201, 0.05);
+    border: 1px solid rgba(255, 174, 201, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* 角色特点列表项悬停效果 */
+.features-section li:hover {
+    transform: translateX(10px);
+    box-shadow: 5px 5px 15px rgba(177, 156, 217, 0.1);
+}
+
+/* 角色特点列表项的图标样式 */
+.feature-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: var(--primary-color);
+}
+
+/* 图片画廊样式 */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* 画廊图片样式 */
+.gallery-image {
+    width: 100%;
+    border-radius: 15px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 3px solid white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 画廊图片悬停效果 */
+.gallery-image:hover {
+    transform: scale(1.05);
+}
+
+/* 查看金句按钮样式 */
+#quote-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary-color);
+    background: rgba(255, 174, 201, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 30px;
+    color: var(--text-color);
+}
+
+/* 查看金句按钮悬停效果 */
+#quote-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s;
+}
+
+#quote-btn:hover {
+    letter-spacing: 2px;
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 5px 15px rgba(177, 156, 217, 0.3);
+}
+
+#quote-btn:hover::after {
+    width: 150%;
+    height: 150%;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    margin-top: 3rem;
+    color: var(--secondary-color);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 闪烁动画 */
+@keyframes sparkle {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+/* 漂浮动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .main-image-container {
+        margin: 2rem 1rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+        margin: 2rem 1rem;
+    }
+
+    .gallery-image {
+        aspect-ratio: 1/1;
+    }
+}
+/* 游戏按钮容器样式 */
+.game-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* 游戏控制按钮样式 */
+.game-control-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFAEC9;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.game-control-button:hover {
+    background-color: #FF7EB9;
+}
+
+/* 游戏结束和介绍模态框样式 */
+#game-over-modal,
+#game-intro-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#game-over-modal p,
+#game-intro-modal p {
+    margin-bottom: 15px;
+}
+
+#game-over-modal button,
+#game-intro-modal button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFAEC9;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#game-over-modal button:hover,
+#game-intro-modal button:hover {
+    background-color: #FF7EB9;
+}
