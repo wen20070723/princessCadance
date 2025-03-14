@@ -65,12 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.translate(heart.x + heart.size / 2, heart.y + heart.size / 2);
             ctx.rotate(heart.angle);
 
+            // 绘制更标准的爱心形状
             ctx.beginPath();
+            ctx.moveTo(-heart.size * 0.4, heart.size * 0.2);
+            ctx.bezierCurveTo(-heart.size * 0.6, heart.size * 0.8, heart.size * 0.6, heart.size * 0.8, heart.size * 0.4, heart.size * 0.2);
+            ctx.bezierCurveTo(heart.size * 0.6, -heart.size * 0.2, -heart.size * 0.6, -heart.size * 0.2, -heart.size * 0.4, heart.size * 0.2);
+            ctx.closePath();
             ctx.fillStyle = heart.hit ? '#ff7eb9' : '#ff3b6d';
-            ctx.arc(-heart.size / 4, 0, heart.size / 2, 0, Math.PI);
-            ctx.arc(heart.size / 4, 0, heart.size / 2, 0, Math.PI);
-            ctx.moveTo(-heart.size / 2, 0);
-            ctx.quadraticCurveTo(0, heart.size, heart.size / 2, 0);
             ctx.fill();
 
             ctx.restore();
